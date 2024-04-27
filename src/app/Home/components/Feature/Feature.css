@@ -1,0 +1,32 @@
+.Feature {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.featureTitles {
+  flex: 1;
+  position: relative;
+  color: rgb(99, 81, 80);
+  border-radius: 10px;
+  overflow: hidden;
+  height: auto;
+  padding: 9px;
+  box-shadow: 10px 10px 10px lightgray;
+  width: 256px;
+  justify-content: space-between;
+}
+.featureimg {
+  width: 100%;
+  object-fit: cover;
+}
+.containerr {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+.containerr > h1 {
+  font-size: 20px;
+}

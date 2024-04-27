@@ -1,0 +1,38 @@
+.plove {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+}
+.pLoveItem {
+  flex: 1;
+  gap: 10px;
+  padding: 9px;
+  flex-direction: column;
+  box-shadow: 2px 4px 10px 4px lightgray;
+  min-width: 250px;
+}
+.featureimg {
+  width: 100%;
+}
+.fpName {
+  font-weight: bold;
+}
+.fpcity {
+  font-weight: 300;
+}
+.fpprive {
+  font-weight: 500;
+}
+.loveRating > button {
+  color: white;
+  border: none;
+  padding: 5px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.loveRating > span {
+  font-size: 14px;
+  font-weight: bold;
+}

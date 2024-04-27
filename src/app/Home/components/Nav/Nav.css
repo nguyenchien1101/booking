@@ -1,0 +1,31 @@
+.narbar {
+  height: 50px;
+  background-color: rgb(118, 100, 99);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.narcontaner {
+  width: 100%;
+  color: aliceblue;
+  max-width: 1024px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-weight: 500;
+}
+.navbutonne {
+  margin-left: 20px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.navbutton {
+  margin-left: 20px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: rgb(21, 21, 133);
+}
