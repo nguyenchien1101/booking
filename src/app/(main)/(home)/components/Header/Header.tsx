@@ -8,6 +8,11 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 export function Header() {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
   const [openDate, setOpenDate] = React.useState(false);
   const [date, setDate] = React.useState([
     {
@@ -49,6 +54,8 @@ export function Header() {
               type="text"
               placeholder="nơi bạn muốn đến"
               className="input"
+              value={inputValue}
+              onChange={handleChange}
             ></input>
           </div>
           <div className="btnseach">
@@ -140,7 +147,11 @@ export function Header() {
           </div>
           <div className="btnseach2">
             <Button variant="contained" sx={{ backgroundColor: "gray" }}>
-              tìm kiếm
+              <a
+                href={`/list?diadiem=${inputValue}&ngayBD=${date[0].startDate}&ngayKT=${date[0].endDate}&soLuong=${options.room}`}
+              >
+                Tìm Kiếm
+              </a>
             </Button>
           </div>
         </div>

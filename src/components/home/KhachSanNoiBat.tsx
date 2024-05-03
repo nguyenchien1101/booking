@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { KhachSan } from '@/interfaces';
-import { axiosClient } from '@/lib/axios';
-import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
-import { Balancer } from 'react-wrap-balancer';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { ListItemNoiBat } from './ListItemNoiBat';
+import { KhachSan } from "@/interfaces";
+import { axiosClient } from "@/lib/axios";
+import { useQuery } from "@tanstack/react-query";
+import React, { useEffect, useState } from "react";
+import { Balancer } from "react-wrap-balancer";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { ListItemNoiBat } from "./ListItemNoiBat";
 
 function KhachSanNoiBatHome() {
   const [isFetched, setIsFetched] = useState(false);
@@ -18,9 +18,9 @@ function KhachSanNoiBatHome() {
   }, []);
 
   const { data } = useQuery({
-    queryKey: ['khachSanNoiBat'],
+    queryKey: ["khachSanNoiBat"],
     queryFn: async () => {
-      const res: KhachSan[] = await axiosClient.get('/api/khach-san-noi-bat');
+      const res: KhachSan[] = await axiosClient.get("/api/khach-san-noi-bat");
       return res;
     },
   });
@@ -45,12 +45,12 @@ function KhachSanNoiBatHome() {
       <Swiper
         style={
           {
-            '--swiper-pagination-bullet-inactive-color': '#999999',
-            '--swiper-pagination-bullet-inactive-opacity': '1',
-            '--swiper-pagination-color': '#000000',
-            '--swiper-pagination-bullet-size': '12px',
-            '--swiper-pagination-bullet-width': '10px',
-            '--swiper-pagination-bullet-height': '10px',
+            "--swiper-pagination-bullet-inactive-color": "#999999",
+            "--swiper-pagination-bullet-inactive-opacity": "1",
+            "--swiper-pagination-color": "#000000",
+            "--swiper-pagination-bullet-size": "12px",
+            "--swiper-pagination-bullet-width": "10px",
+            "--swiper-pagination-bullet-height": "10px",
           } as React.CSSProperties
         }
         slidesPerView={1}
@@ -79,30 +79,6 @@ function KhachSanNoiBatHome() {
         modules={[Pagination]}
         className="w-full h-auto relative "
       >
-        {listNoiBat?.map((item) => (
-          <SwiperSlide
-            key={item.id}
-            className="h-full relative py-6 px-3 overflow-visible"
-          >
-            <ListItemNoiBat item={item} />
-          </SwiperSlide>
-        ))}
-        {listNoiBat?.map((item) => (
-          <SwiperSlide
-            key={item.id}
-            className="h-full relative py-6 px-3 overflow-visible"
-          >
-            <ListItemNoiBat item={item} />
-          </SwiperSlide>
-        ))}
-        {listNoiBat?.map((item) => (
-          <SwiperSlide
-            key={item.id}
-            className="h-full relative py-6 px-3 overflow-visible"
-          >
-            <ListItemNoiBat item={item} />
-          </SwiperSlide>
-        ))}
         {listNoiBat?.map((item) => (
           <SwiperSlide
             key={item.id}

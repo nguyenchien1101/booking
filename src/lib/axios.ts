@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
 const config = {
   baseURL: process.env.NEXT_PUBLIC_BACKEND_API_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 };
 
@@ -11,7 +11,7 @@ const axiosClient = axios.create(config);
 
 axiosClient.interceptors.request.use(
   async (req: any) => {
-    const token = localStorage.getItem('booking_token');
+    const token = localStorage.getItem("booking_token");
     if (token) {
       req.headers.Authorization = `Bearer ${token}`;
     } else {

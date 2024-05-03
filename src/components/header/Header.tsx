@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-'use client';
+"use client";
 
 // import AuthSvg from '@/assets/AuthSvg';
 import {
@@ -9,49 +9,49 @@ import {
   DropdownMenu,
   DropdownSection,
   DropdownTrigger,
-} from '@nextui-org/react';
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { FiMessageSquare } from 'react-icons/fi';
-import Logo from '../Logo';
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { MobileNav } from './MobileNavBar';
-import './styles.css';
+} from "@nextui-org/react";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { AiOutlineHeart } from "react-icons/ai";
+import { FiMessageSquare } from "react-icons/fi";
+import Logo from "../Logo";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { MobileNav } from "./MobileNavBar";
+import "./styles.css";
 
 const avatarNav = [
   {
-    name: 'Hồ sơ',
-    href: '/user',
+    name: "Hồ sơ",
+    href: "/user",
   },
   {
-    name: 'Tin nhắn',
-    href: '/conversations',
+    name: "Tin nhắn",
+    href: "/conversations",
   },
 ];
 
 const Header = () => {
-  const [show, setShow] = useState('translate-y-0');
+  const [show, setShow] = useState("translate-y-0");
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const router = useRouter();
   useEffect(() => {
-    window.addEventListener('scroll', controlNavbar);
+    window.addEventListener("scroll", controlNavbar);
     return () => {
-      window.removeEventListener('scroll', controlNavbar);
+      window.removeEventListener("scroll", controlNavbar);
     };
   });
   const controlNavbar = () => {
     if (window.scrollY > 100) {
       if (window.scrollY > lastScrollY) {
-        setShow('-translate-y-[82px]');
+        setShow("-translate-y-[82px]");
       } else {
-        setShow('shadow-sm');
+        setShow("shadow-sm");
       }
     } else {
-      setShow('translate-y-0');
+      setShow("translate-y-0");
     }
     setLastScrollY(window.scrollY);
   };
@@ -73,9 +73,9 @@ const Header = () => {
               <NavigationMenu.Item>
                 <NavigationMenu.Link
                   className="NavigationMenuLink h-full"
-                  href="/khach-san"
+                  href="/list"
                 >
-                  Khách sạn{' '}
+                  Khách sạn{" "}
                 </NavigationMenu.Link>
               </NavigationMenu.Item>
 
@@ -88,7 +88,7 @@ const Header = () => {
               <NavigationMenu.Viewport className="NavigationMenuViewport" />
             </div>
           </NavigationMenu.Root>
-          <Link href={'/agency'}>
+          <Link href={"/agency"}>
             <Button
               className="w-48 bg-red-400 text-white font-medium shadow-lg transition ease-in-out hover:scale-105 hover:shadow-red-200"
               variant="shadow"
@@ -99,7 +99,7 @@ const Header = () => {
           </Link>
           {null ? (
             <div className="flex flex-row gap-2 items-center justify-center">
-              <Link href={'/yeu-thich'}>
+              <Link href={"/yeu-thich"}>
                 {/* <Button variant="outline" size="icon" className="relative">
                 {
                   <AiOutlineHeart className="text-slate-600 stroke-zinc-950 w-4 h-4 " />
@@ -116,7 +116,7 @@ const Header = () => {
                 </Button>
               </Link>
 
-              <Link href={'/conversations'}>
+              <Link href={"/conversations"}>
                 {/* <Button variant="outline" size="icon" className="relative">
                 {
                   <AiOutlineHeart className="text-slate-600 stroke-zinc-950 w-4 h-4 " />
@@ -166,7 +166,7 @@ const Header = () => {
                       ))}
 
                       <DropdownItem
-                        onClick={() => signOut({ callbackUrl: '/auth/login' })}
+                        onClick={() => signOut({ callbackUrl: "/auth/login" })}
                       >
                         <div className="flex flex-row gap-2 items-center h-8  ">
                           {/* <div className="">{AuthSvg.signIn()}</div> */}
@@ -204,7 +204,7 @@ const Header = () => {
             </DropdownMenu> */}
             </div>
           ) : (
-            <Link href={'/auth/login'}>
+            <Link href={"/auth/login"}>
               <Button
                 className=" ml-2 border-1 font-medium border-red-400 text-red-400 hover:bg-red-400 hover:text-white transition ease-in-out hover:scale-105 border-solid"
                 variant="bordered"

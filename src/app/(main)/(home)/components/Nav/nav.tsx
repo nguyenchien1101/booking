@@ -1,7 +1,7 @@
 import React from "react";
 import "./Nav.css";
 import Button from "@mui/material/Button";
-export default function nav() {
+export default function Nav() {
   return (
     <div className="narbar">
       <div className="narcontaner">
@@ -12,9 +12,6 @@ export default function nav() {
           </span>
           <span className="navbutonne">
             <a href="/list">Khách Sạn</a>
-          </span>
-          <span className="navbutonne">
-            <a href="/booking">Booking</a>
           </span>
         </div>
         <div className="Item">
