@@ -2,10 +2,15 @@
 import React, { useState } from "react";
 import "./Header.css";
 import Button from "@mui/material/Button";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import {
+  faLocationCrosshairs,
+  faCalendar,
+  faBed,
+} from "@fortawesome/free-solid-svg-icons";
 import { format } from "date-fns";
 export function Header() {
   const [inputValue, setInputValue] = useState("");
@@ -50,6 +55,9 @@ export function Header() {
         </div>
         <div className="search">
           <div className="btnseach">
+            <span>
+              <FontAwesomeIcon icon={faLocationCrosshairs} />
+            </span>
             <input
               type="text"
               placeholder="nơi bạn muốn đến"
@@ -59,6 +67,7 @@ export function Header() {
             ></input>
           </div>
           <div className="btnseach">
+            <FontAwesomeIcon icon={faCalendar} />
             <span
               onClick={() => setOpenDate(!openDate)}
               className="text"
@@ -77,7 +86,8 @@ export function Header() {
             )}
           </div>
           <div className="btnseach">
-            {" "}
+            <FontAwesomeIcon icon={faBed} />
+
             <span onClick={() => setOpenopnion(!Openopnion)} className="text">
               {`${options.adult} adult - ${options.children} children - ${options.room} room`}
             </span>

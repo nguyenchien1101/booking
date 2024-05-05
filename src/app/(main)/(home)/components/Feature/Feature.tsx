@@ -20,11 +20,11 @@ function Render(props) {
   return (
     <div>
       <div className="featureTitles">
-        <a href={"/list?diadiem=" + props.id}>
-          <img src={props.image} alt="cousre" className="featureimg" />
-        </a>
-        <div className="contanierr">
-          <h1>{props.title}</h1>
+        <div className="Thumbex">
+          <a href={"/list?diadiem=" + props.id}>
+            <img src={props.image} alt="cousre" className="Fgimg" />
+            <span className="spann">{props.title}</span>
+          </a>
         </div>
       </div>
     </div>
@@ -41,9 +41,6 @@ export default function Feature() {
   const diemDens = data as DiemDen[];
   return (
     <div className="Feature">
-      {course.data.map((value) => (
-        <Render image={value.image} title={value.title} />
-      ))}
       {diemDens?.map((value, index) => (
         <Render
           key={value.id}
