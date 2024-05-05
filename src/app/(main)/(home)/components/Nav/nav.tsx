@@ -11,6 +11,12 @@ export default function Nav() {
           <span className="navbutonne">
             <a href="/">Home</a>
           </span>
+          <span className="navbutonne">
+            <a href="/">About Us</a>
+          </span>
+          <span className="navbutonne">
+            <a href="/">Help</a>
+          </span>
         </div>
         <div className="Item">
           <Button
