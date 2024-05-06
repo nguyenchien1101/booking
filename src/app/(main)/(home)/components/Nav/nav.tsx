@@ -19,6 +19,12 @@ export default function Nav() {
           >
             <a href="/Login">Đăng Nhập</a>
           </Button>
+          <Button
+            variant="contained"
+            sx={{ marginLeft: "20px", backgroundColor: "gray" }}
+          >
+            <a href="/Signup">Đăng Ký</a>
+          </Button>
         </div>
       </div>
     </div>
