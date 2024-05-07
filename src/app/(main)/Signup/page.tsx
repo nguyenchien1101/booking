@@ -1,6 +1,6 @@
 import React from "react";
-
 import "./signup.css";
+import DateOfBirthPicker from "./DateOfBirthPicker/dateofbirthpicker";
 
 export default function page() {
   return (
@@ -28,9 +28,7 @@ export default function page() {
             </select>
           </div>
           <div className="input-box">
-            <input type="text" placeholder="Date" maxLength="2" />
-            <input type="text" placeholder="Month" maxLength="2" />
-            <input type="text" placeholder="Year" maxLength="4" />
+            <DateOfBirthPicker />
           </div>
           <button type="submit">
             <a href="/">Sign up</a>

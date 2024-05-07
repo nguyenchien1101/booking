@@ -1,0 +1,8 @@
+.input-box {
+  margin-bottom: 20px;
+}
+
+.input-box select:focus {
+  border-color: #aaa;
+  outline: none;
+}

@@ -60,7 +60,7 @@ export function Header() {
             </span>
             <input
               type="text"
-              placeholder="nơi bạn muốn đến"
+              placeholder="Nơi bạn muốn đến"
               className="input"
               value={inputValue}
               onChange={handleChange}
