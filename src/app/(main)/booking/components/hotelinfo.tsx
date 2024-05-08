@@ -23,7 +23,7 @@ const HotelInfo = () => {
     queryKey: ["khach-san", newparams],
     queryFn: async () => {
       const res = await axiosClient.get(
-        `/api/khach-sans/${newparams}?populate=*`
+        `/api/khach-sans?populate=*&filters[id][$in]=${newparams}`
       );
       return res?.data;
     },

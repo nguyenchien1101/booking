@@ -21,7 +21,7 @@ function Render(props) {
     <div>
       <div className="featureTitles">
         <div className="Thumbex">
-          <a href={"/list?diadiem=" + props.id}>
+          <a href={"/list?diadiem=" + props.title}>
             <img src={props.image} alt="cousre" className="Fgimg" />
             <span className="spann">{props.title}</span>
           </a>

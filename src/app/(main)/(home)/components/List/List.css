@@ -4,6 +4,7 @@
   display: flex;
   overflow-x: auto;
   gap: 20px;
+  height: auto;
 }
 .pListItem {
   flex: 1;

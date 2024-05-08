@@ -12,12 +12,12 @@ interface Props {
 const HotelList = () => {
   const query = useSearchParams();
   const newparams = query.get("diadiem");
-
+  console.log(newparams);
   const { data } = useQuery({
     queryKey: ["khach-san", newparams],
     queryFn: async () => {
       const res = await axiosClient.get(
-        `/api/khach-sans?populate=*&filter[diem_den][id][$eq]=${newparams}`
+        `/api/khach-sans?populate=*&filters[diem_den][ten][$eq]=${newparams}`
       );
       return res?.data;
     },
