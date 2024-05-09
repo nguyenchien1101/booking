@@ -4,10 +4,16 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { axiosClient } from '@/lib/axios';
 import { useQuery } from '@tanstack/react-query';
+import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react';
 import { BiSolidArrowFromBottom } from 'react-icons/bi';
 import { BsCheck2 } from 'react-icons/bs';
-import { ImagePost } from './ImagePost';
+import { FaStar } from 'react-icons/fa';
+
+const ImagePost = dynamic(() => import('./ImagePost'), {
+  loading: () => null,
+  ssr: false,
+});
 const CURRENCY_FORMAT = new Intl.NumberFormat(undefined, {
   currency: 'VND',
   style: 'currency',
@@ -18,8 +24,7 @@ export function formatCurrency(value: number) {
 }
 
 export default function ChiTietComponent({ id }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['khach-san', id],
     queryFn: async () => {
       const res = await axiosClient.get(`/api/khach-sans/${id}?populate=*`);
@@ -37,104 +42,80 @@ export default function ChiTietComponent({ id }) {
       <div className="container mx-auto px-[24px]">
         <div className="ml-4">
           <div className="container pt-[48px]">
-            {/* <div className="flex flex-col lg:flex-row justify-between mb-8">
+            <div className="flex flex-col lg:flex-row justify-between mb-8">
               <div className="w-[60%]">
                 <h1 className="text-[28px] text-neutral-700 font-medium ">
-                  {chiTietBDS?.tieuDe}
+                  {data?.attributes?.ten}
                 </h1>
-                <h4 className="text-gray-500">{chiTietBDS?.diaChi}</h4>
+                <h4 className="text-gray-500">{data?.attributes?.diaChi}</h4>
               </div>
               <div className="text-[28px] text-neutral-700 font-medium my-auto flex flex-row lg:w-[40%] lg:justify-end w-full justify-between space-x-6">
-                <p>
-                  {formatCurrency(chiTietBDS?.gia)}
-                  {chiTietBDS?.isChothue === true ? (
-                    <p className="text-[24px] font-normal"> /Tháng</p>
-                  ) : (
-                    <></>
+                <div className="flex flex-row ">
+                  {Array.from({ length: data?.attributes?.sao }).map(
+                    (_, index) => (
+                      <FaStar key={index} className="text-yellow-400" />
+                    )
                   )}
-                </p>
-                <div>
-                  <LikeShareGroup
-                    userIdOfWriter={chiTietBDS?.userId}
-                    postId={parseInt(id)}
-                    session={session}
-                  />
                 </div>
               </div>
-            </div> */}
+            </div>
             <ImagePost imageList={data?.attributes?.hinhAnhKhachSan} />
-            {/* <div className="flex flex-col lg:flex-row lg:gap-6">
+            <div className="flex flex-col lg:flex-row lg:gap-6">
               <div className="basis-3/4">
                 <div className="mt-8 w-full rounded-md bg-white border-[1px] shadow p-8">
                   <div className="flex flex-row flex-wrap gap-4">
                     <div className="rounded bg-gray-50 text-gray-600 text-[14px] py-2 px-8">
-                      {chiTietBDS?.isChothue === false
-                        ? 'Đăng bán'
-                        : 'Cho thuê'}
+                      {data?.attributes?.loai_khach_san?.data?.attributes?.ten}
                     </div>
                     <div className="rounded bg-gray-50 text-gray-600 text-[14px] py-2 px-8">
-                      {chiTietBDS?.loaiHinh?.name}
+                      {data?.attributes?.diem_den?.data?.attributes?.ten}
                     </div>
-                    {chiTietBDS?.loaiHinh?.loaiBDS?.name === 'Căn hộ' ||
-                    chiTietBDS?.loaiHinh?.loaiBDS?.name === 'Nhà ở' ? (
-                      <>
-                        <div className="rounded bg-gray-50 text-gray-600 text-[14px] py-2 px-8">
-                          Nhà tắm: {chiTietBDS?.soPhongTam}
-                        </div>
-                        <div className="rounded bg-gray-50 text-gray-600 text-[14px] py-2 px-8">
-                          Phòng ngủ: {chiTietBDS?.soPhongNgu}
-                        </div>
-                      </>
-                    ) : (
-                      <></>
-                    )}
+
                     <div className="rounded bg-gray-50 text-gray-600 text-[14px] py-2 px-8">
-                      Diện tích: {chiTietBDS?.dienTich} m<sup>2</sup>
+                      Diện tích: {data?.dienTich} m<sup>2</sup>
                     </div>
                   </div>
                   <div className="mt-8 text-gray-600">Mô tả</div>
                   <div className="mt-4 text-gray-600 text-[14px]">
-                    {chiTietBDS?.moTa}
+                    {data?.attributes?.moTa}
                   </div>
                   <Separator className="mt-4" />
                   <div className="mt-8 text-gray-600">Thông tin chi tiết</div>
                   <div className="mt-4 lg:w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-gray-600 text-[14px]">
                     <div className="flex flex-row">
                       <div className="w-1/2">BDS ID:</div>
-                      <div className="w-1/2 font-semibold">
-                        {chiTietBDS?.id}
-                      </div>
+                      <div className="w-1/2 font-semibold">{data?.id}</div>
                     </div>
                     <div className="flex flex-row">
                       <div className="w-1/2">Chiều dài:</div>
                       <div className="w-1/2 font-semibold">
-                        {chiTietBDS?.chieuDai} m
+                        {data?.chieuDai} m
                       </div>
                     </div>
                     <div className="flex flex-row">
                       <div className="w-1/2">Chiều rộng:</div>
                       <div className="w-1/2 font-semibold">
-                        {chiTietBDS?.chieuRong} m
+                        {data?.chieuRong} m
                       </div>
                     </div>
                     <div className="flex flex-row">
                       <div className="w-1/2">Diện tích:</div>
                       <div className="w-1/2 font-semibold">
-                        {chiTietBDS?.dienTich} m<sup>2</sup>
+                        {data?.dienTich} m<sup>2</sup>
                       </div>
                     </div>
-                    {chiTietBDS?.loaiHinh?.loaiBDS?.name !== 'Đất' ? (
+                    {data?.loaiHinh?.loaiBDS?.name !== 'Đất' ? (
                       <>
                         <div className="flex flex-row">
                           <div className="w-1/2">Nội thất:</div>
                           <div className="w-1/2 font-semibold">
-                            {chiTietBDS?.tinhTrangNoiThat}
+                            {data?.tinhTrangNoiThat}
                           </div>
                         </div>
                         <div className="flex flex-row">
                           <div className="w-1/2">Hướng cửa chính:</div>
                           <div className="w-1/2 font-semibold">
-                            {chiTietBDS?.huongCuaChinh}
+                            {data?.huongCuaChinh}
                           </div>
                         </div>
                       </>
@@ -142,49 +123,49 @@ export default function ChiTietComponent({ id }) {
                       <div className="flex flex-row">
                         <div className="w-1/2">Hướng đất:</div>
                         <div className="w-1/2 font-semibold">
-                          {chiTietBDS?.huongDat}
+                          {data?.huongDat}
                         </div>
                       </div>
                     )}
-                    {chiTietBDS?.loaiHinh?.loaiBDS?.name === 'Căn hộ' ? (
+                    {data?.loaiHinh?.loaiBDS?.name === 'Căn hộ' ? (
                       <>
                         <div className="flex flex-row">
                           <div className="w-1/2">Hướng ban công:</div>
                           <div className="w-1/2 font-semibold">
-                            {chiTietBDS?.huongBanCong}
+                            {data?.huongBanCong}
                           </div>
                         </div>
                         <div className="flex flex-row">
                           <div className="w-1/2">Số tầng:</div>
                           <div className="w-1/2 font-semibold">
-                            {chiTietBDS?.soTang}
+                            {data?.soTang}
                           </div>
                         </div>
                         <div className="flex flex-row">
                           <div className="w-1/2">Phòng tắm:</div>
                           <div className="w-1/2 font-semibold">
-                            {chiTietBDS?.soPhongTam}
+                            {data?.soPhongTam}
                           </div>
                         </div>
                         <div className="flex flex-row">
                           <div className="w-1/2">Phòng ngủ:</div>
                           <div className="w-1/2 font-semibold">
-                            {chiTietBDS?.soPhongNgu}
+                            {data?.soPhongNgu}
                           </div>
                         </div>
-                        {chiTietBDS?.dienTichGarage > 0 && (
+                        {data?.dienTichGarage > 0 && (
                           <div className="flex flex-row">
                             <div className="w-1/2">Garage:</div>
                             <div className="w-1/2 font-semibold">
-                              {chiTietBDS?.dienTichGarage} m<sup>2</sup>
+                              {data?.dienTichGarage} m<sup>2</sup>
                             </div>
                           </div>
                         )}
-                        {chiTietBDS?.dienTichHoBoi > 0 && (
+                        {data?.dienTichHoBoi > 0 && (
                           <div className="flex flex-row">
                             <div className="w-1/2">Hồ bơi:</div>
                             <div className="w-1/2 font-semibold">
-                              {chiTietBDS?.dienTichHoBoi} m<sup>2</sup>
+                              {data?.dienTichHoBoi} m<sup>2</sup>
                             </div>
                           </div>
                         )}
@@ -192,7 +173,7 @@ export default function ChiTietComponent({ id }) {
                           <div className="w-1/2">Năm hoàn thành:</div>
                           <div className="w-1/2 font-semibold">
                             {
-                              new Date(chiTietBDS?.hoanThanh)
+                              new Date(data?.hoanThanh)
                                 .toLocaleDateString('en-GB')
                                 .split('/')[2]
                             }
@@ -202,40 +183,40 @@ export default function ChiTietComponent({ id }) {
                           <div className="w-1/2">Sửa chữa lần cuối:</div>
                           <div className="w-1/2 font-semibold">
                             {
-                              new Date(chiTietBDS?.suaChuaLanCuoi)
+                              new Date(data?.suaChuaLanCuoi)
                                 .toLocaleDateString('en-GB')
                                 .split('/')[2]
                             }
                           </div>
                         </div>
                       </>
-                    ) : chiTietBDS?.loaiHinh?.loaiBDS?.name === 'Nhà ở' ? (
+                    ) : data?.loaiHinh?.loaiBDS?.name === 'Nhà ở' ? (
                       <>
                         <div className="flex flex-row">
                           <div className="w-1/2">Phòng tắm:</div>
                           <div className="w-1/2 font-semibold">
-                            {chiTietBDS?.soPhongTam}
+                            {data?.soPhongTam}
                           </div>
                         </div>
                         <div className="flex flex-row">
                           <div className="w-1/2">Phòng ngủ:</div>
                           <div className="w-1/2 font-semibold">
-                            {chiTietBDS?.soPhongNgu}
+                            {data?.soPhongNgu}
                           </div>
                         </div>
-                        {chiTietBDS?.dienTichGarage > 0 && (
+                        {data?.dienTichGarage > 0 && (
                           <div className="flex flex-row">
                             <div className="w-1/2">Garage:</div>
                             <div className="w-1/2 font-semibold">
-                              {chiTietBDS?.dienTichGarage} m<sup>2</sup>
+                              {data?.dienTichGarage} m<sup>2</sup>
                             </div>
                           </div>
                         )}
-                        {chiTietBDS?.dienTichHoBoi > 0 && (
+                        {data?.dienTichHoBoi > 0 && (
                           <div className="flex flex-row">
                             <div className="w-1/2">Hồ bơi:</div>
                             <div className="w-1/2 font-semibold">
-                              {chiTietBDS?.dienTichHoBoi} m<sup>2</sup>
+                              {data?.dienTichHoBoi} m<sup>2</sup>
                             </div>
                           </div>
                         )}
@@ -243,7 +224,7 @@ export default function ChiTietComponent({ id }) {
                           <div className="w-1/2">Năm hoàn thành:</div>
                           <div className="w-1/2 font-semibold">
                             {
-                              new Date(chiTietBDS?.hoanThanh)
+                              new Date(data?.hoanThanh)
                                 .toLocaleDateString('en-GB')
                                 .split('/')[2]
                             }
@@ -253,7 +234,7 @@ export default function ChiTietComponent({ id }) {
                           <div className="w-1/2">Sửa chữa lần cuối:</div>
                           <div className="w-1/2 font-semibold">
                             {
-                              new Date(chiTietBDS?.suaChuaLanCuoi)
+                              new Date(data?.suaChuaLanCuoi)
                                 .toLocaleDateString('en-GB')
                                 .split('/')[2]
                             }
@@ -266,16 +247,16 @@ export default function ChiTietComponent({ id }) {
                     <div className="flex flex-row">
                       <div className="w-1/2">Tình trạng pháp lý:</div>
                       <div className="w-1/2 font-semibold">
-                        {chiTietBDS?.tinhTrangPhapLy}
+                        {data?.tinhTrangPhapLy}
                       </div>
                     </div>
                   </div>
                 </div>
-                {chiTietBDS?.loaiHinh?.loaiBDS?.name !== 'Đất' ? (
+                {/* {data?.loaiHinh?.loaiBDS?.name !== 'Đất' ? (
                   <div className="mt-8 mb-8 w-full rounded-md bg-white border-[1px] shadow p-8">
                     <div className="text-gray-600 font-semibold">Tiện nghi</div>
                     <div className="mt-4 lg:w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-gray-600 text-[14px]">
-                      {parseJSON(chiTietBDS?.danhSachTienNghi).map((item) => (
+                      {parseJSON(data?.danhSachTienNghi).map((item) => (
                         <div className="flex flex-row">
                           <BsCheck2 className="text-blue-500 w-[24px] h-[24px] mr-4" />
                           <div className="w-1/2">{item}</div>
@@ -285,24 +266,24 @@ export default function ChiTietComponent({ id }) {
                   </div>
                 ) : (
                   <></>
-                )}
+                )} */}
                 <div className="mt-8 mb-8 w-full rounded-md bg-white border-[1px] shadow p-8">
                   <div className="flex flex-row justify-between flex-wrap">
                     <div className="text-gray-600 font-semibold">Vị trí</div>
                     <div className="text-gray-600 text-[14px]">
-                      {chiTietBDS?.diaChi}
+                      {data?.diaChi}
                     </div>
                   </div>
                   <div className="mt-8 w-full rounded-md overflow-hidden"></div>
-                  <MapComponent
+                  {/* <MapComponent
                     lat={toaDo?.lat}
                     lon={toaDo?.lon}
-                    nameAddress={chiTietBDS?.diaChi}
-                    title={chiTietBDS?.tieuDe}
-                  />
+                    nameAddress={data?.diaChi}
+                    title={data?.tieuDe}
+                  /> */}
                 </div>
-                {chiTietBDS?.loaiHinh?.loaiBDS?.name === 'Nhà ở' ||
-                chiTietBDS?.loaiHinh?.loaiBDS?.name === 'Căn hộ' ? (
+                {data?.loaiHinh?.loaiBDS?.name === 'Nhà ở' ||
+                data?.loaiHinh?.loaiBDS?.name === 'Căn hộ' ? (
                   <div className="mt-8 mb-8 w-full rounded-md bg-white border-[1px] shadow p-8">
                     <div className="flex flex-row justify-between flex-wrap">
                       <div className="text-gray-600 font-semibold">
@@ -310,7 +291,7 @@ export default function ChiTietComponent({ id }) {
                       </div>
                     </div>
                     <img
-                      src={parseJSON(chiTietBDS?.hinhAnhBanVeThietKe)[0]?.url}
+                      src={parseJSON(data?.hinhAnhBanVeThietKe)[0]?.url}
                       className="mt-8 w-full rounded-md h-[360px] md:h-[540px] lg:h-[630px]"
                       style={{ objectFit: 'cover' }}
                     />
@@ -320,22 +301,25 @@ export default function ChiTietComponent({ id }) {
                   <div className="flex flex-row justify-between flex-wrap">
                     <div className="text-gray-600 font-semibold">Video</div>
                   </div>
-                  {/* <img
+                </div>
+              </div>
+            </div>
+            {/* <img
               src="https://thamtuphuctam.com/wp-content/uploads/2019/01/dich-vu-tham-tu-thanh-hoa-min.jpg"
               className="mt-8 w-full rounded-md"
               style={{ objectFit: "cover" }}
-            /> */}
+            />
             {/* <iframe
                     className="mt-8 rounded-md w-full h-[270px] md:h-[450px] lg:h-[540px]"
                     style={{ objectFit: 'cover' }}
-                    src={chiTietBDS?.video}
-                  ></iframe> */}
+                    src={data?.video}
+                  ></iframe>
             {/* </div>
               </div>
               <div className="basis-1/4 h-fit lg:mt-8 mt-0 mb-8">
                 <ContactInfo
-                  doiTacInfo={chiTietBDS?.user}
-                  nhan={chiTietBDS?.nhan}
+                  doiTacInfo={data?.user}
+                  nhan={data?.nhan}
                 />
               </div>
             </div>  */}

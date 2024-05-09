@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 
-export function ImagePost({ imageList }) {
+export default function ImagePost({ imageList }) {
   console.log('🚀 ~ ImagePost ~ imageList:', imageList);
   const [indexCarousel, setIndexCarousel] = useState(0);
   return (
@@ -103,7 +103,7 @@ export function ImagePost({ imageList }) {
                 />
                 <div className="bg-neutral-800 opacity-50 absolute w-full h-full top-0"></div>
                 <div className="text-white font-medium lg:text-[36px] text-[58px] absolute m-0 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] cursor-default">
-                  +{imageList?.length - 6}
+                  +{imageList?.data?.length - 6}
                 </div>
               </div>
             </div>
