@@ -2,12 +2,14 @@
 import React, { ChangeEvent, useState } from "react";
 import Navigation from "../(home)/components/Nav/nav";
 import Filter from "./components/filer";
-import Heading from "./components/heading";
+import Footer from "./components/footer";
 import HotelList from "./components/hotelList";
 import { useParams, useSearchParams } from "next/navigation"; // Import from next/navigation
 import { KhachSan } from "@/interfaces";
 import { axiosClient } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
+import { Separator } from "../../../components/ui/separator";
+import { SearchComponent } from "@/components/khach-san/SearchComponent";
 const data1 = [
   {
     ten: "Central Hotel",
@@ -46,52 +48,16 @@ const data1 = [
   },
 ];
 const List = () => {
-  const [sort, setSort] = useState("");
-  const [hotelLists, setHotelList] = useState(data1);
-  console.log(sort, "1");
-  const handleSort = (e: ChangeEvent<HTMLSelectElement>) => {
-    const selectedSort = e.target.value;
-    setSort(selectedSort);
-    const sortedList = [...hotelLists];
-    if (selectedSort === "Tên") {
-      sortedList.sort((a, b) => {
-        if (a.ten < b.ten) {
-          return -1;
-        } else if (a.ten > b.ten) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-    }
-    if (selectedSort === "Điểm số") {
-      sortedList.sort((a, b) => {
-        if (a.diemSo > b.diemSo) {
-          return -1;
-        } else if (a.diemSo < b.diemSo) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-    }
-    setHotelList(sortedList);
-  };
-
   return (
-    <>
-      <div className="w-4/5 mx-auto mt-20">
-        <Heading
-          count={hotelLists.length}
-          sortValue={sort}
-          handleSort={handleSort}
-        />
-        <div className="flex justify-between items-start flex-1">
-          <Filter />
-          <HotelList />
-        </div>
+    <div className="flex flex-col gap-6 lg:gap-0 lg:flex-row pt-8 pb-8">
+      <div className="basis-[35%] flex flex-col gap-4">
+        <Footer />
       </div>
-    </>
+      <div className="basis-[65%]">
+        <Separator className="lg:hidden h-[6px] mt-4 mb-8 w-[96%] text-gray-500 rounded-md" />
+        <HotelList />
+      </div>
+    </div>
   );
 };
 

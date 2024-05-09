@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { Input, Select, SelectItem } from '@nextui-org/react';
+import { Button } from "@/components/ui/button";
+import { Input, Select, SelectItem } from "@nextui-org/react";
 
 import {
   Form,
@@ -9,27 +9,28 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from '@/components/ui/form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { BiBuildingHouse } from 'react-icons/bi';
-import { GiReceiveMoney } from 'react-icons/gi';
-import * as z from 'zod';
-import PickDiemDen from './PickDiemDen';
+} from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { BiBuildingHouse } from "react-icons/bi";
+import { GiReceiveMoney } from "react-icons/gi";
+
+import * as z from "zod";
+import PickDiemDen from "./PickDiemDen";
 
 const types = [
-  { label: 'Căn hộ', value: 'Căn hộ' },
-  { label: 'Nhà ở', value: 'Nhà ở' },
-  { label: 'Văn phòng', value: 'Văn phòng' },
-  { label: 'Đất', value: 'Đất' },
+  { label: "Hồ Chí Minh", value: "Hồ Chí Minh" },
+  { label: "Nhà ở", value: "Nhà ở" },
+  { label: "Văn phòng", value: "Văn phòng" },
+  { label: "Đất", value: "Đất" },
 ] as const;
 
 const isRents = [
-  { label: 'Cho thuê', value: 'true' },
-  { label: 'Đăng bán', value: 'false' },
+  { label: "Cho thuê", value: "true" },
+  { label: "Đăng bán", value: "false" },
 ] as const;
 
 const formSchema = z.object({
@@ -40,23 +41,23 @@ const formSchema = z.object({
 
 export function SearchBarHome() {
   const router = useRouter();
-  const [addressValue, setAddressValue] = useState('');
+  const [addressValue, setAddressValue] = useState("");
 
   useEffect(() => {}, []);
   // 1. Define your form.
-  const [typeNumber, setTypeNumber] = useState('0');
+  const [typeNumber, setTypeNumber] = useState("0");
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      searchWord: '',
-      type: '',
-      isRent: '',
+      searchWord: "",
+      type: "",
+      isRent: "",
     },
   });
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     router.push(
-      `/bat-dong-san?tukhoa=${values.searchWord}&diachi=${addressValue}&loaibds=${values.type}&hinhthuc=${values.isRent}`
+      `./khach-san?tukhoa=${values.searchWord}&diachi=${addressValue}&loaibds=${values.type}&hinhthuc=${values.isRent}`
     );
   }
   return (
@@ -79,7 +80,7 @@ export function SearchBarHome() {
                           className="h-[52px]"
                           variant="bordered"
                           radius="sm"
-                          label="Nhập từ khóa"
+                          label="Nơi Bạn muốn đến"
                           {...field}
                         />
                         <MagnifyingGlassIcon className="h-6 w-6 opacity-50 float-right -mt-9 mr-4" />
@@ -119,13 +120,13 @@ export function SearchBarHome() {
                               value={type.value}
                               onClick={() => {
                                 setTypeNumber(
-                                  type.value === 'Căn hộ'
-                                    ? '1'
-                                    : type.value === 'Nhà ở'
-                                    ? '2'
-                                    : type.value === 'Văn phòng'
-                                    ? '3'
-                                    : '4'
+                                  type.value === "Căn hộ"
+                                    ? "1"
+                                    : type.value === "Nhà ở"
+                                    ? "2"
+                                    : type.value === "Văn phòng"
+                                    ? "3"
+                                    : "4"
                                 );
                               }}
                             >
@@ -171,7 +172,7 @@ export function SearchBarHome() {
                 className="w-[90%] bg-red-400 hover:bg:text-white bg:bg-slate-800"
                 type="submit"
               >
-                Tìm kiếm
+                tìm kiếm
               </Button>
             </form>
           </Form>
