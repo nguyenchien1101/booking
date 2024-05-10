@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
 // import { useState } from "react";
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import Image from 'next/image';
-import React, { useState } from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import Image from "next/image";
+import React, { useState } from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
-export function ImagePost({ imageList }) {
-  console.log('🚀 ~ ImagePost ~ imageList:', imageList);
+export default function ImagePost({ imageList }) {
+  console.log("🚀 ~ ImagePost ~ imageList:", imageList);
   const [indexCarousel, setIndexCarousel] = useState(0);
   return (
     <>
@@ -23,7 +23,7 @@ export function ImagePost({ imageList }) {
             >
               <img
                 className="w-full h-full"
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: "cover" }}
                 src={imageList?.data?.[0]?.attributes?.url}
               />
             </div>
@@ -36,7 +36,7 @@ export function ImagePost({ imageList }) {
               >
                 <img
                   className="w-full h-full"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: "cover" }}
                   src={imageList?.data?.[1]?.attributes?.url}
                 />
               </div>
@@ -48,7 +48,7 @@ export function ImagePost({ imageList }) {
               >
                 <img
                   className="w-full h-full"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: "cover" }}
                   src={imageList?.data?.[3]?.attributes?.url}
                 />
               </div>
@@ -60,7 +60,7 @@ export function ImagePost({ imageList }) {
               >
                 <img
                   className="w-full h-full"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: "cover" }}
                   src={imageList?.data?.[5]?.attributes?.url}
                 />
               </div>
@@ -74,7 +74,7 @@ export function ImagePost({ imageList }) {
               >
                 <img
                   className="w-full h-full"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: "cover" }}
                   src={imageList?.data?.[2]?.attributes?.url}
                 />
               </div>
@@ -86,7 +86,7 @@ export function ImagePost({ imageList }) {
               >
                 <img
                   className="w-full h-full"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: "cover" }}
                   src={imageList?.data?.[4]?.attributes?.url}
                 />
               </div>
@@ -98,12 +98,12 @@ export function ImagePost({ imageList }) {
               >
                 <img
                   className="w-full h-full"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: "cover" }}
                   src={imageList?.data?.[6]?.attributes?.url}
                 />
                 <div className="bg-neutral-800 opacity-50 absolute w-full h-full top-0"></div>
                 <div className="text-white font-medium lg:text-[36px] text-[58px] absolute m-0 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] cursor-default">
-                  +{imageList?.length - 6}
+                  +{imageList?.data?.length - 6}
                 </div>
               </div>
             </div>

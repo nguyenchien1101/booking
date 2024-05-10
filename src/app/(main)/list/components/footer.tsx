@@ -49,7 +49,7 @@ const Footer = () => {
 
         <Link href={"/list?TenKS=filters[ten][$eq]=" + inputValue}>
           <Button className="w-[90%] bg-red-400" type="submit">
-            Lọc
+            Tìm
           </Button>
         </Link>
       </div>
