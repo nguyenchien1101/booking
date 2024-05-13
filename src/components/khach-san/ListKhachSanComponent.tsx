@@ -18,26 +18,29 @@ import { useParams, useSearchParams } from "next/navigation";
 
 export function ListKhachSanComponent() {
   const [currentPage, setCurrentPage] = useState(1);
-  //   const { data } = useQuery({
-  //     queryKey: [
-  //       ['bat-dong-san', currentPage],
-  //       ['props', searchProps],
-  //     ],
-  //     queryFn: () => fetchAllBatDongSan(currentPage, searchProps),
-  //     staleTime: 60 * 1000 * 1,
-  //     keepPreviousData: true,
-  //   });
 
+  const [locsao, setlocsao] = useState("");
   const query = useSearchParams();
+
+  useEffect(() => {
+    const locsao = query.get("locsao") || "";
+    setlocsao(locsao);
+  }, [query]);
+
   const tukhoa = query.get("tukhoa");
-  const diaChi = query.get("loaibds");
-  console.log(diaChi);
+  const locten = query.get("locten");
+
+  const locdanhgia = query.get("locdanhgia");
+
+  console.log(locten);
+  console.log(locsao);
+  console.log(locdanhgia);
 
   const { data } = useQuery({
     queryKey: ["khach-sans"],
     queryFn: async () => {
       const res = await axiosClient.get(
-        `/api/khach-sans?populate=*&filters[diem_den][ten][$eq]=${tukhoa}`
+        `/api/khach-sans?populate=*&filters[diem_den][ten][$eq]=${tukhoa}&sort${locsao}`
       );
       return res;
     },
@@ -45,16 +48,10 @@ export function ListKhachSanComponent() {
   });
   console.log(data?.data?.id);
   const ref = React.useRef(null);
-
-  //Set page state when change review page index
   const onPageChange = (page) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
     setCurrentPage(page);
   };
-
-  const [isDefault, setIsDefault] = useState(true);
-  const [isDefaultPrice, setIsDefaultPrice] = useState(true);
-  console.log("🚀 ~ ListComponent ~ data:", data);
 
   return (
     <div ref={ref} className="mr-6">

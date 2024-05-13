@@ -87,69 +87,7 @@ function DiemDenNoiBat() {
           >
             <Link
               key={diemDen.attributes.slug}
-              href={`${diemDen?.attributes?.slug}`}
-            >
-              <div className="group rounded-md overflow-hidden relative h-[350px] w-full">
-                <img
-                  src={diemDen?.attributes?.hinhAnh?.data?.attributes?.url}
-                  alt={"Khu vực"}
-                  className="transition ease-in-out group-hover:scale-105 group-hover:rotate-2  object-cover w-full h-full"
-                  style={{ transitionDuration: "500ms" }}
-                />
-                <div
-                  className="px-5 absolute inset-0 z-20 flex items-end justify-center"
-                  style={{
-                    background:
-                      "linear-gradient(to top, #25253bdc 0%, #20202b00 100%)",
-                  }}
-                >
-                  <h3 className="text-[24px] font-semibold capitalize text-slate-100 md:text-xl mb-6">
-                    {diemDen?.attributes?.ten}{" "}
-                  </h3>
-                </div>
-              </div>
-            </Link>
-          </SwiperSlide>
-        ))}
-        {diemDens?.map((diemDen, index) => (
-          <SwiperSlide
-            key={`loai-${index}`}
-            className="h-full relative mb-16 overflow-visible"
-          >
-            <Link
-              key={diemDen.attributes.slug}
-              href={`${diemDen?.attributes?.slug}`}
-            >
-              <div className="group rounded-md overflow-hidden relative h-[350px] w-full">
-                <img
-                  src={diemDen?.attributes?.hinhAnh?.data?.attributes?.url}
-                  alt={"Khu vực"}
-                  className="transition ease-in-out group-hover:scale-105 group-hover:rotate-2  object-cover w-full h-full"
-                  style={{ transitionDuration: "500ms" }}
-                />
-                <div
-                  className="px-5 absolute inset-0 z-20 flex items-end justify-center"
-                  style={{
-                    background:
-                      "linear-gradient(to top, #25253bdc 0%, #20202b00 100%)",
-                  }}
-                >
-                  <h3 className="text-[24px] font-semibold capitalize text-slate-100 md:text-xl mb-6">
-                    {diemDen?.attributes?.ten}{" "}
-                  </h3>
-                </div>
-              </div>
-            </Link>
-          </SwiperSlide>
-        ))}
-        {diemDens?.map((diemDen, index) => (
-          <SwiperSlide
-            key={`loai-${index}`}
-            className="h-full relative mb-16 overflow-visible"
-          >
-            <Link
-              key={diemDen.attributes.slug}
-              href={`${diemDen?.attributes?.slug}`}
+              href={`./khach-san?tukhoa=${diemDen?.attributes?.ten}`}
             >
               <div className="group rounded-md overflow-hidden relative h-[350px] w-full">
                 <img
