@@ -12,20 +12,20 @@ export default function page() {
             <input type="text" placeholder="Email" />
           </div>
           <div className="input-box">
-            <input type="text" placeholder="Password" />
+            <input type="password" placeholder="Password" />
           </div>
           <div className="checkbox">
             <label>
-              <input type="checkbox" /> remember me
+              <input type="checkbox" /> Remember me
             </label>
-            <a href="#">forgot Password</a>
+            <a href="#">Forgot Password?</a>
           </div>
           <button type="submit">
             <a href="/">Login</a>
           </button>
           <div className="dk">
             <p>
-              Bạn chưa có tài khoản ? <a href="#">Đăng ký</a>{" "}
+              Bạn chưa có tài khoản? <a href="/Signup">Đăng ký</a>{" "}
             </p>
           </div>
         </div>

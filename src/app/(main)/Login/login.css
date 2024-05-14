@@ -58,11 +58,13 @@
   transform: translateY(-50%);
   font-size: 16px;
 }
-.containerlogin.checkbox {
+.checkbox {
   display: flex;
   justify-content: space-between;
-  font-size: 14.5px;
-  margin: -15px 0px 15px;
+}
+.checkbox label {
+  display: flex;
+  align-items: center;
 }
 .checkbox label input {
   accent-color: #fff;
@@ -71,6 +73,7 @@
 .checkbox a {
   color: #fff;
   text-decoration: none;
+  margin-left: auto; /* Đẩy thẻ a về phía bên phải */
 }
 .checkbox a:hover {
   text-decoration: underline;
