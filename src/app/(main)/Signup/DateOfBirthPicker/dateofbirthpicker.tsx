@@ -74,10 +74,11 @@ const DateOfBirthPicker = () => {
 
   return (
     <div className="flex">
+      {/* Select option cho ngày */}
       <select
+        className="w-1/3 p-3 border-2 border-white rounded-full bg-transparent text-white mr-2 focus:ring-1 focus:ring-white outline-none"
         value={day}
         onChange={handleDayChange}
-        className="w-2/7 p-3 border border-white rounded-full bg-transparent text-white text-center mr-2 outline-none"
       >
         <option value="" disabled selected hidden>
           Ngày
@@ -91,9 +92,9 @@ const DateOfBirthPicker = () => {
 
       {/* Select option cho tháng */}
       <select
+        className="w-1/3 p-3 border-2 border-white rounded-full bg-transparent text-white mr-2 focus:ring-1 focus:ring-white outline-none"
         value={month}
         onChange={handleMonthChange}
-        className="w-2/7 p-3 border border-white rounded-full bg-transparent text-white text-center mr-2 outline-none"
       >
         <option value="" disabled selected hidden>
           Tháng
@@ -107,9 +108,9 @@ const DateOfBirthPicker = () => {
 
       {/* Select option cho năm */}
       <select
+        className="w-1/3 p-3 border-2 border-white rounded-full bg-transparent text-white focus:ring-1 focus:ring-white outline-none"
         value={year}
         onChange={handleYearChange}
-        className="w-full p-3 border border-white rounded-full bg-transparent text-white text-center outline-none"
       >
         <option value="" disabled selected hidden>
           Năm
