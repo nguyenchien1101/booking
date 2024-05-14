@@ -63,7 +63,7 @@ const Signup = () => {
           "url(https://i.pinimg.com/originals/5f/cc/80/5fcc80e2a77a4ce69467ea7f08e49fea.png)",
       }}
     >
-      <div className="my-6 border-2 border-white bg-white bg-opacity-10 backdrop-blur-lg bg-stone-950 text-white rounded-lg p-10 shadow-lg w-96">
+      <div className="my-6 border-2 border-white bg-zinc-950 bg-opacity-10 backdrop-blur-lg text-white rounded-lg p-10 shadow-lg w-96">
         <h1 className="text-4xl text-center mb-6">Sign Up</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex space-x-4">

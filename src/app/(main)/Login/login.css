@@ -1,83 +1,88 @@
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 100vh;
-  max-width: 1535px;
-  background: url(https://i.pinimg.com/originals/5f/cc/80/5fcc80e2a77a4ce69467ea7f08e49fea.png)
-    no-repeat;
-  background-size: cover;
-
-  height: 695px;
-}
-.containerlogin {
-  width: 420px;
-  background-color: transparent;
-  color: #fff;
-  border-radius: 10px;
-  padding: 30px 40px;
-  border: 2px solid rgba(255, 255, 255, 2);
-  backdrop-filter: blur(30px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.containerlogin h1 {
-  font-size: 36px;
-  text-align: center;
-}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.containerlogin .input-box {
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(https://i.pinimg.com/originals/5f/cc/80/5fcc80e2a77a4ce69467ea7f08e49fea.png)
+    no-repeat center center;
+  background-size: cover;
+  padding: 20px;
+}
+
+.containerlogin {
+  width: 100%;
+  max-width: 420px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  border: 2px solid rgb(255, 255, 255);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.containerlogin h1 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-box {
   position: relative;
   width: 100%;
   height: 50px;
   background-color: transparent;
-  margin: 30px 0px;
+  margin-bottom: 20px;
 }
+
 .input-box input {
   width: 100%;
   height: 100%;
   background: transparent;
   border: none;
   outline: none;
-  border: 2px solid rgba(255, 255, 255, 2);
+  border: 2px solid rgb(255, 255, 255);
   border-radius: 40px;
   color: #fff;
-  padding: 20px 45px 20px 20px;
+  padding: 10px 20px;
 }
 
 .input-box input::placeholder {
-  color: #fff;
+  color: #ffffff9c;
 }
-.input-box .icon {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 16px;
-}
+
 .checkbox {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
+
 .checkbox label {
   display: flex;
   align-items: center;
 }
+
 .checkbox label input {
   accent-color: #fff;
   margin-right: 4px;
 }
+
 .checkbox a {
   color: #fff;
   text-decoration: none;
-  margin-left: auto; /* Đẩy thẻ a về phía bên phải */
 }
+
 .checkbox a:hover {
   text-decoration: underline;
 }
+
 .containerlogin button {
   width: 100%;
   height: 45px;
@@ -85,22 +90,42 @@
   border: none;
   outline: none;
   border-radius: 40px;
-  box-shadow: 0 0 10 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-size: 16px;
   color: #333;
   font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
-.containerlogin .dk {
-  font-size: 14.5px;
+.containerlogin button:hover {
+  background: #666;
+  color: #fff;
+}
+.containerlogin button a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dk {
+  font-size: 14px;
   text-align: center;
-  margin: 20px 0 15px;
+  margin: 20px 0 10px;
 }
+
 .dk p a {
   color: #fff;
   text-decoration: none;
-  font-weight: 900px;
+  font-weight: 700;
 }
+
 .dk p a:hover {
   text-decoration: underline;
 }
