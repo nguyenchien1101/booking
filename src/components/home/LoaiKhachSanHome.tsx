@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { LoaiKhachSan } from '@/interfaces';
-import { axiosClient } from '@/lib/axios';
-import { useQuery } from '@tanstack/react-query';
-import Link from 'next/link';
-import React from 'react';
-import { Balancer } from 'react-wrap-balancer';
-import { Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { LoaiKhachSan } from "@/interfaces";
+import { axiosClient } from "@/lib/axios";
+import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
+import React from "react";
+import { Balancer } from "react-wrap-balancer";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 function LoaiKhachSanHome() {
   const [isFetched, setIsFetched] = React.useState(false);
 
   const { data } = useQuery({
-    queryKey: ['loaiKhachSan'],
+    queryKey: ["loaiKhachSan"],
     queryFn: async () => {
       const res = await axiosClient.get(
-        '/api/loai-khach-sans?populate[0]=hinhAnh'
+        "/api/loai-khach-sans?populate[0]=hinhAnh"
       );
       return res?.data;
     },
@@ -47,12 +47,12 @@ function LoaiKhachSanHome() {
       <Swiper
         style={
           {
-            '--swiper-pagination-bullet-inactive-color': '#999999',
-            '--swiper-pagination-bullet-inactive-opacity': '1',
-            '--swiper-pagination-color': '#000000',
-            '--swiper-pagination-bullet-size': '12px',
-            '--swiper-pagination-bullet-width': '10px',
-            '--swiper-pagination-bullet-height': '10px',
+            "--swiper-pagination-bullet-inactive-color": "#999999",
+            "--swiper-pagination-bullet-inactive-opacity": "1",
+            "--swiper-pagination-color": "#000000",
+            "--swiper-pagination-bullet-size": "12px",
+            "--swiper-pagination-bullet-width": "10px",
+            "--swiper-pagination-bullet-height": "10px",
           } as React.CSSProperties
         }
         slidesPerView={1}
@@ -86,14 +86,12 @@ function LoaiKhachSanHome() {
             key={`loai-${index}`}
             className="h-full relative mb-16 overflow-visible"
           >
-            <Link
-              href={`/bat-dong-san/loai-hinh-bat-dong-san/${collection?.attributes?.slug}`}
-            >
+            <Link href={`/list`}>
               <div className="group relative overflow-hidden rounded-md">
                 <AspectRatio ratio={3 / 2}>
                   <img
                     src={collection.attributes?.hinhAnh?.data?.attributes?.url}
-                    alt={'Loại bất động sản'}
+                    alt={"Loại bất động sản"}
                     className="object-cover h-full w-full transition-transform group-hover:scale-105"
                   />
                 </AspectRatio>
@@ -101,7 +99,7 @@ function LoaiKhachSanHome() {
                   className="px-5 absolute inset-0 z-20 flex items-end justify-center"
                   style={{
                     background:
-                      'linear-gradient(to top, #25253bdc 0%, #20202b00 80%)',
+                      "linear-gradient(to top, #25253bdc 0%, #20202b00 80%)",
                   }}
                 >
                   <h3 className="text-[24px] font-semibold capitalize text-slate-100 md:text-xl mb-6">

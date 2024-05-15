@@ -88,13 +88,13 @@ const Header = () => {
               <NavigationMenu.Viewport className="NavigationMenuViewport" />
             </div>
           </NavigationMenu.Root>
-          <Link href={"/agency"}>
+          <Link href={"/Aboutus"}>
             <Button
               className="w-48 bg-red-400 text-white font-medium shadow-lg transition ease-in-out hover:scale-105 hover:shadow-red-200"
               variant="shadow"
               radius="sm"
             >
-              Dành cho đối tác
+              About Us
             </Button>
           </Link>
           {null ? (

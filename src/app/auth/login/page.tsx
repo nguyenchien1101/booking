@@ -1,9 +1,9 @@
-import { Metadata } from 'next';
-import React from 'react';
-import Login from './Login';
+import { Metadata } from "next";
+import React from "react";
+import Login from "./Login";
 export const metadata: Metadata = {
-  title: 'Authentication',
-  description: 'Authentication forms built using the components.',
+  title: "Authentication",
+  description: "Authentication forms built using the components.",
 };
 
 const LoginPage = async () => {
@@ -18,7 +18,7 @@ const LoginPage = async () => {
                 Chào mừng!
               </h1>
               <p className="text-sm text-muted-foreground">
-                Đăng nhập để kết nối với cộng đồng Hùng Luật Group.
+                Đăng nhập để kết nối với chúng tôi.
               </p>
             </div>
             <Login />
