@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import "./login.css";
 
 export default function page() {
@@ -12,6 +14,15 @@ export default function page() {
   const handleLogin = (e) => {
     e.preventDefault();
 
+    if (!email) {
+      setError("Please enter your email");
+      return;
+    }
+
+    if (!password) {
+      setError("Please enter your password");
+      return;
+    }
     // Dummy check: replace this with actual authentication
     if (email === "test@example.com" && password === "password") {
       // Redirect to home page
@@ -41,7 +52,11 @@ export default function page() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          {error && <div className="error">{error}</div>}
+          {error && (
+            <div className="error">
+              <FontAwesomeIcon icon={faExclamationCircle} /> {error}
+            </div>
+          )}
           <div className="checkbox">
             <label>
               <input type="checkbox" /> Remember me
