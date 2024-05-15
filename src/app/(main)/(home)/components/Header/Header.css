@@ -1,6 +1,6 @@
 .hearder {
-  background: url(https://i.pinimg.com/originals/5f/cc/80/5fcc80e2a77a4ce69467ea7f08e49fea.png)
-    no-repeat;
+  background: url(https://images.pexels.com/photos/1308940/pexels-photo-1308940.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+    center;
   background-size: cover;
   background-attachment: fixed;
   color: white;
@@ -9,8 +9,9 @@
   align-items: center;
   position: relative;
   z-index: 1;
-  height: 420px;
+  height: 500px;
   width: 100%;
+  font-size: 17px;
 }
 .container {
   width: 100%;

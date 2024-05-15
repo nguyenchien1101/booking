@@ -2,12 +2,22 @@
 import React, { useState } from "react";
 import "./Header.css";
 import Button from "@mui/material/Button";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import {
+  faLocationCrosshairs,
+  faCalendar,
+  faBed,
+} from "@fortawesome/free-solid-svg-icons";
 import { format } from "date-fns";
 export function Header() {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
   const [openDate, setOpenDate] = React.useState(false);
   const [date, setDate] = React.useState([
     {
@@ -45,13 +55,19 @@ export function Header() {
         </div>
         <div className="search">
           <div className="btnseach">
+            <span>
+              <FontAwesomeIcon icon={faLocationCrosshairs} />
+            </span>
             <input
               type="text"
               placeholder="nơi bạn muốn đến"
               className="input"
+              value={inputValue}
+              onChange={handleChange}
             ></input>
           </div>
           <div className="btnseach">
+            <FontAwesomeIcon icon={faCalendar} />
             <span
               onClick={() => setOpenDate(!openDate)}
               className="text"
@@ -70,7 +86,8 @@ export function Header() {
             )}
           </div>
           <div className="btnseach">
-            {" "}
+            <FontAwesomeIcon icon={faBed} />
+
             <span onClick={() => setOpenopnion(!Openopnion)} className="text">
               {`${options.adult} adult - ${options.children} children - ${options.room} room`}
             </span>
@@ -140,7 +157,11 @@ export function Header() {
           </div>
           <div className="btnseach2">
             <Button variant="contained" sx={{ backgroundColor: "gray" }}>
-              tìm kiếm
+              <a
+                href={`/list?diadiem=${inputValue}&ngayBD=${date[0].startDate}&ngayKT=${date[0].endDate}&soLuong=${options.room}`}
+              >
+                Tìm Kiếm
+              </a>
             </Button>
           </div>
         </div>

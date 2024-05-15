@@ -1,0 +1,81 @@
+.Picture {
+  color: #333;
+  font: 14px/1.5 "Fira Sans";
+  margin: 0 auto;
+  padding: 2rem;
+  width: 800px;
+}
+.row {
+  display: flex;
+}
+.col {
+  border: 3px solid white;
+  color: white;
+  flex: 1 1 auto;
+  min-height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+.col:nth-child(2) {
+  min-width: 20%;
+}
+.col:nth-child(4) {
+  min-width: 33%;
+}
+.photoss {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 1s;
+  transform-origin: bottom right;
+}
+.photoss::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+h2 {
+  font-weight: 300;
+  font-size: 1.33333rem;
+  line-height: 1.25;
+  margin: 0;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 0;
+}
+.slide {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 0.275s ease-in-out, visibility 0s 0.275s;
+  visibility: hidden;
+  will-change: transform;
+}
+.slide {
+  background: #190115cc;
+}
+.row:hover ~ .row .slide {
+  transform: translateY(-100%);
+}
+.row:hover .slide {
+  transform: translateX(100%);
+}
+.row:hover .col:hover ~ .col .slide {
+  transform: translateX(-100%);
+}
+.row:hover .col:hover .slide {
+  transform: none;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.col:hover .photoss {
+  transform: scale(1.25);
+}

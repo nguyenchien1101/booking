@@ -1,0 +1,11 @@
+.hotelinfocontainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgb(179, 227, 227);
+  height: 500px;
+  width: auto;
+  margin-right: 30px;
+  margin-bottom: 50px;
+  padding: 20px;
+}

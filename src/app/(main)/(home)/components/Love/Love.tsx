@@ -1,86 +1,68 @@
 import React from "react";
 import "./Love.css";
-import Rating from "@mui/material/Rating";
-const course = {
-  data: [
-    {
-      image:
-        "https://i.pinimg.com/564x/31/c5/62/31c562e6ed5e7cf5a62d52548a62d607.jpg",
-      name: "Sapa",
-      city: " Bà Rịa – Vũng Tàu",
-      price: "8000",
-      rate: "5",
-      tot: "excellent",
-    },
-    {
-      image:
-        "https://i.pinimg.com/564x/1e/3d/8c/1e3d8c6d8ad24a077d5748bb9305652b.jpg",
-      name: "Sapa",
-      city: " Bà Rịa – Vũng Tàu",
-      price: "8000",
-      rate: "5",
-      tot: "excellent",
-    },
-    {
-      image:
-        "https://i.pinimg.com/564x/37/e0/2f/37e02f44e80efd1ec9357d58e73f0bd9.jpg",
-      name: "Sapa",
-      city: " Bà Rịa – Vũng Tàu",
-      price: "8000",
-      rate: "5",
-      tot: "excellent",
-    },
-    {
-      image:
-        "https://i.pinimg.com/564x/7a/cf/bb/7acfbbe4e72a9aa48863419723c78de6.jpg",
-      name: "Sapa",
-      city: " Bà Rịa – Vũng Tàu",
-      price: "8000",
-      rate: "5",
-      tot: "excellent",
-    },
-    {
-      image:
-        "https://i.pinimg.com/564x/39/f7/5f/39f75f7420610e86118513a325fb719a.jpg",
-      name: "Sapa",
-      city: " Bà Rịa – Vũng Tàu",
-      price: "8000",
-      rate: "5",
-      tot: "excellent",
-    },
-  ],
-};
-function App(props) {
+function Love() {
   return (
-    <div className="pLoveItem">
-      <a href="/">
-        <img src={props.image} alt="cousre" className="featureimg" />
-      </a>
-      <div className="plovetitle">
-        <div className="fpName">{props.name}</div>
-        <div className="fpcity">{props.city}</div>
-        <div className="fpprive">{props.price}</div>
-        <div className="loveRating">
-          <button>
-            <Rating name="read-only" value={props.rate} readOnly size="small" />
-          </button>
+    <div className="Love">
+      <div className="wrapper">
+        <div className="chua">
+          <input type="radio" name="slide" id="c1" defaultChecked />
+
+          <label htmlFor="c1" className="card">
+            <div className="row">
+              <div className="icon">1</div>
+              <div className="description">
+                <h4>forest</h4>
+                <p>
+                  Rừng là một môi trường tự nhiên đầy màu sắc và sống động, mang
+                  lại sự tự thân và hòa nhập cho con người
+                </p>
+              </div>
+            </div>
+          </label>
+          <input type="radio" name="slide" id="c2" />
+          <label htmlFor="c2" className="card">
+            <div className="row">
+              <div className="icon">2</div>
+              <div className="description">
+                <h4>Sea</h4>
+                <p>
+                  Biển là một thế giới hùng vĩ, với đại dương bao la và đầy bí
+                  ẩn, là nơi sinh sống của nhiều loài động vật và cây cỏ độc đáo
+                </p>
+              </div>
+            </div>
+          </label>
+          <input type="radio" name="slide" id="c3" />
+          <label htmlFor="c3" className="card">
+            <div className="row">
+              <div className="icon">3</div>
+              <div className="description">
+                <h4>sky</h4>
+                <p>
+                  Bầu trời - vô biên, tĩnh lặng và đầy bí ẩn, là nguồn cảm hứng
+                  vô tận cho trí tưởng tượng của con người
+                </p>
+              </div>
+            </div>
+          </label>
+          <input type="radio" name="slide" id="c4" />
+          <label htmlFor="c4" className="card">
+            <div className="row">
+              <div className="icon">4</div>
+              <div className="description">
+                <h4>Moutain</h4>
+                <p>
+                  Núi - những khối đá cao vút, tạo nên cảnh quan hùng vĩ, mang
+                  đến sự yên bình và một góc nhìn tuyệt đẹp lên thế giới từ độ
+                  cao.
+                </p>
+              </div>
+            </div>
+          </label>
         </div>
       </div>
     </div>
   );
 }
-export default function Love() {
-  return (
-    <div className="plove">
-      {course.data.map((vl) => (
-        <App
-          image={vl.image}
-          name={vl.name}
-          city={vl.city}
-          price={vl.price}
-          rate={vl.rate}
-        />
-      ))}
-    </div>
-  );
-}
+
+export default Love;

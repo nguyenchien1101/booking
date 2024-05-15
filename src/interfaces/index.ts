@@ -10,7 +10,6 @@ export interface HinhAnh {
 
 export interface LoaiKhachSan {
   id: number;
-
   attributes: {
     ten: string;
     hinhAnh: HinhAnh;
@@ -47,6 +46,7 @@ export interface KhachSan {
   hinhAnhKhachSan: {
     data: HinhAnh[];
   };
+  tiennghi: string;
   loai_khach_san: { data: LoaiKhachSan };
   dienTich: number;
   diem_den: { data: DiemDen };

@@ -1,32 +1,61 @@
 .Feature {
-  width: 100%;
-  max-width: 1024px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  max-width: 1024px;
+  overflow-x: auto;
+  height: 400px;
+}
+.Thumbex {
+  width: 250px;
+  height: 280px;
+  flex: 1;
+  overflow: hidden;
+  outline: 3px solid white;
+  outline-offset: -15px;
+  background-color: blue;
+  box-shadow: 5px 10px 40px 5px black;
 }
 .featureTitles {
-  flex: 1;
-  position: relative;
-  color: rgb(99, 81, 80);
-  border-radius: 10px;
   overflow: hidden;
-  height: auto;
-  padding: 9px;
-  box-shadow: 10px 10px 10px lightgray;
-  width: 256px;
-  justify-content: space-between;
+  min-width: 250px;
+  height: 280px;
+  position: relative;
+  opacity: 0.8;
+  backface-visibility: hidden;
+  transition: all 0.4s ease-out;
 }
-.featureimg {
-  width: 100%;
-  object-fit: cover;
-}
-.containerr {
+.Fgimg {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  height: 115%;
+  width: auto;
+  transform: translate(-50%, -50%);
 }
-.containerr > h1 {
-  font-size: 20px;
+.spann {
+  position: absolute;
+  z-index: 2;
+  top: calc(150px - 20px);
+  left: 0;
+  right: 0;
+  background: #000000b3;
+  color: white;
+  font-size: 24px;
+  font-weight: 300;
+  padding: 10px;
+  margin: 0 45px;
+  text-align: center;
+  letter-spacing: 0.2px;
+  transition: all 0.3s ease-out;
+}
+.featureTitles:hover {
+  backface-visibility: hidden;
+  transform: scale(1.15, 1.15);
+  opacity: 1;
+}
+.featureTitles:hover .spann {
+  opacity: 0;
 }
